@@ -106,7 +106,7 @@ function updateInvoice() {
 		// get inventory row cells
 		cells = a[i].querySelectorAll('span:last-child');
 
-		// set price as cell[2] * cell[3]
+		// set price as cell[1] * cell[2]
 		price = parseFloatHTML(cells[1]) * parseFloatHTML(cells[2]);
 
 		// add price to total
@@ -116,17 +116,20 @@ function updateInvoice() {
 		cells[3].innerHTML = price;
 	}
 
+	document.getElementById("total").innerHTML=total;
+	document.getElementById("gtotal").value=total;
+
 	// update balance cells
 	// ====================
 
 	// get balance cells
-	cells = document.querySelectorAll('table.balance td:last-child span:last-child');
+	//cells = document.querySelectorAll('table.balance td:last-child span:last-child');
 
 	// set total
-	cells[0].innerHTML = total;
+	//cells[0].innerHTML = total;
 
 	// set balance and meta balance
-	cells[2].innerHTML = total;
+	//cells[2].innerHTML = total;
 
 	// update prefix formatting
 	// ========================
@@ -138,6 +141,26 @@ function updateInvoice() {
 	// =======================
 
 	//for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement != a[i]) a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
+}
+
+function taxCalculation(event){
+	
+	
+	var tax=document.getElementById("tax").value;
+	var discount=document.getElementById("discount").value;
+	var total=document.getElementById("total").innerHTML;
+	
+	tax=((total*tax)/100);
+	document.getElementById("taxlabel").value=tax;
+
+
+	discount=((total*discount)/100);
+	document.getElementById("discountlabel").value=discount;
+
+	amount=total-discount+tax;
+	document.getElementById("gtotal").value=amount;
+
+
 }
 
 function onContentLoad() {
@@ -176,25 +199,6 @@ function onContentLoad() {
 		image.classList.remove('hover');
 	}
 
-	function onFileInput(e) {
-		image.classList.remove('hover');
-
-		var
-		reader = new FileReader(),
-		files = e.dataTransfer ? e.dataTransfer.files : e.target.files,
-		i = 0;
-
-		reader.onload = onFileLoad;
-
-		while (files[i]) reader.readAsDataURL(files[i++]);
-	}
-
-	function onFileLoad(e) {
-		var data = e.target.result;
-
-		image.src = data;
-	}
-
 	if (window.addEventListener) {
 		document.addEventListener('click', onClick);
 
@@ -213,8 +217,6 @@ function onContentLoad() {
 		input.addEventListener('dragleave', onLeaveCancel);
 		input.addEventListener('mouseout', onLeaveCancel);
 
-		input.addEventListener('drop', onFileInput);
-		input.addEventListener('change', onFileInput);
 	}
 }
 

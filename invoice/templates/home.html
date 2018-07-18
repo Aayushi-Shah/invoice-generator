@@ -96,6 +96,8 @@
 		</div>
 		</div>
 
+
+
 	<!-- Modal for customer details -->
 	<div id="myModal" class="modal">
 		<div class="modal-content">
@@ -142,6 +144,8 @@
 		</div>
 	</div>
 
+
+
 <!-- Modal for product details -->
 <div id="myModal1" class="modal">
 	 <div class="modal-content">
@@ -175,7 +179,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><span contenteditable></span>Item Name</td>
+							<td><span contenteditable>Item Name</span></td>
 							<td><span data-prefix>₹</span><span contenteditable>0.00</span></td>
 							<td><span contenteditable>0</span></td>
 							<td><span data-prefix>₹</span><span>0.00</span></td>
@@ -183,27 +187,46 @@
 						</tr>
 					</tbody>
 				</table>
-				<table class="balance">
-				<tr>
-					<th><span contenteditable>Total</span></th>
-					<td><span data-prefix>$</span><span>600.00</span></td>
-				</tr>
-				<tr>
-					<th><span contenteditable>Amount Paid</span></th>
-					<td><span data-prefix>$</span><span contenteditable>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span contenteditable>Balance Due</span></th>
-					<td><span data-prefix>$</span><span>600.00</span></td>
-				</tr>
-			</table>
-				<!--a class="add">+</a-->
 			</article>
-			<p id="demo"></p>
-			<p id="dema"></p>
+			<section>
+				<div style="float:left;margin-left:10px;">
+					<div class="left-inner-addon">
+						<i class="fa fa-fw fa-percent"></i>
+						<input class="tax" placeholder="Tax" id="tax" oninput="taxCalculation()"/>
+					</div>
+			</div>
+			<div style="float:left;margin-left:150px;">
+				<div class="left-inner-addon">
+					<i class="fa fa-fw fa-percent"></i>
+					<input class="discount" placeholder="Discount" id="discount" oninput ="taxCalculation()"/>
+			</div>
 		</div>
+			<div style="float: right;margin-left: 200px">
+					<span class="heading5" style="font-weight: 500;">Sub Total:</span><span>₹<span><span id="total" style="margin-right:50px;font-weight: 700 ">{{total}}</span>
+					
+			</div>
+	</section>
+		<br style="clear:both;" />
+		<br style="clear:both;" />
+		</div>
+		
 		<div class="modal-footer">
-					<button class="btn-proceed" id="myBtn3">SUBMIT</button>
+			<section>
+				<p id="demo"></p>
+				<div style="float:left;margin-left: -620px; margin-right: 80px; width:60px;">
+					<label for="tax" class="heading4" >Tax</label>
+					<input id="taxlabel" type="text" value="" name="tax" placeholder="₹0.00" style="border:none;background-color: none;width:60px" >
+				</div>
+				<div style="float:left;margin-left: -500px; margin-right: 80px; width:60px;">
+					<label for="discount" class="heading4">Discount</label>
+					<input id="discountlabel" type="text" value="" name="discount" placeholder="₹0.00" style="border:none;width: 60px;">
+				</div>	
+				<div style="float: left;margin-left:-200px;margin-right:80px;">
+					<label for="gtotallabel" style="font-weight: 700">Grand Total:</label>
+					<input id="gtotal" type="text" value="" name="gtotal" style="border:none;width: 60px; font-weight: 500">
+				</div>
+				<button class="btn-proceed" id="myBtn3">SAVE</button>
+			</section>
 		</div>
 	</div>
 </div>
