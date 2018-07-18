@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="../static/logo.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+
+	<title>Invoice App</title>
+	<!-- Bootstrap core CSS-->
+	<link href="../../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<!-- Custom fonts for this template-->
+	<link href="../../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous">
+	<!-- Page level plugin CSS-->
+	<!--link href="../../static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" crossorigin="anonymous"-->
+	<!-- Custom styles for this template-->
+	<link href="../../static/css/sb-admin.css" rel="stylesheet" crossorigin="anonymous">
+	<script type="text/javascript">
+		window.addEventListener( "pageshow", function ( event ) {
+			var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+			if ( historyTraversal ) {
+				// Handle page restore.
+				window.location.reload();
+			}
+		});
+	</script>
+</head>
+
+	<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNav">
+		<a class="navbar-brand" href="/flows">Dashbord</a>
+		<!--button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button-->
+
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+				<br>
+				<div class="col-xs-12">
+					<div class="right-inner-addon">
+						<i class="fa fa-fw fa-search"></i>
+						<input type="search" class="search" placeholder="Search..." />
+					</div>
+				</div>     
+				<br>  
+				<!--li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+					<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+						<i class="fa fa-fw fa-cloud"></i>
+						<span class="nav-link-text">Create Flows</span>
+					</a>
+					<ul class="sidenav-second-level collapse" id="collapseComponents">
+						<li>
+							<a href="/flows">Choose Templates</a>
+						</li>
+						<li>
+							<a href="/customflows">Customize Flows</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+					<a class="nav-link" href="/yourflows">
+						<i class="fa fa-fw fa-briefcase"></i>
+						<span class="nav-link-text">Your Flows</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="/logout">
+						<i class="fa fa-fw fa-sign-out"></i>
+						<span class="nav-link-text">Logout</span></a>
+				</li-->
+			</ul>
+			<ul class="navbar-nav sidenav-toggler">
+				<li class="nav-item">
+					<a class="nav-link text-center" id="sidenavToggler">
+						<i class="fa fa-fw fa-angle-left"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+	<div class="content-wrapper" >
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/flows">Invoice Details</a>
+				</li>
+			</ol>
+			 <button class="btn btn-default btn-circle" id="myBtn"><i class="fa fa-fw fa-plus" style="color: #ffffff"></i></button>
+		</div>
+		</div>
+
+	<!-- Modal for customer details -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-body">
+				<section>
+					<span class="heading1">Create New Invoice</span><span> Order no.:1234</span><span class="close">&times;</span>
+				</section>  
+				<section>
+					<span class="heading2">Customer Details</span><span><button class="btn-skip" id="myBtn1">SKIP <i class="fa fa-fw fa-step-forward" style="color: #6495ED"></i></button></span>
+				</section>  
+			</div>
+			<div class="modal-body">
+				<form name="customer" method="post" style="font-family:sans-serif;">
+					<section>
+						<div style="float:left;margin-right:20px;">
+							<label for="name" class="heading3">Full Name*</label>
+							<input id="name" type="text" value="" name="name" placeholder="Customer Name">
+						</div>
+						<div style="float:left;margin-left: -4.5px; ">
+							<label for="phone">Phone No*</label>
+							<input id="phone" type="text" value="" name="phone">
+						</div>
+						<br style="clear:both;" />
+						<br style="clear:both;" />
+					</section>
+					<section>
+						<div style="float: left;margin-right: 20px;">
+							<label for="address" class="heading3">Address</label>
+							<textarea id="address" type="text" value="" name="address" cols="45" rows="5" placeholder="Complete Address"></textarea> 
+						</div>
+						<div style="float: left;margin-left: 20px">
+							<label for="email">Email ID*</label>
+							<input id="email" type="email" value="" name="emailid" placeholder="Customer Email Adrress">
+							<br style="clear:both;" />
+							<label for="pincode">Pin Code</label>
+							<input id="pincode" type="text" value="" name="pincode" placeholder="395009">
+						</div>
+					</section>
+				</form>
+			</div>
+			<div class="modal-footer">
+						<button class="btn-proceed" id="myBtn2">PROCEED</button>
+			</div>
+		</div>
+	</div>
+
+<!-- Modal for product details -->
+<div id="myModal1" class="modal">
+	 <div class="modal-content">
+			<div class="modal-body">
+				<section>
+					<div style="float:left;margin-right:20px;">
+						<span class="heading1">Create New Invoice</span><span> Order no.:1234</span><span class="close1">&times;</span>    
+						<br style="clear:both;" />
+						<span class="heading4">Product Details</span>
+					</div>
+					<div style="float:right;margin-right:20px;">
+						<span style="float:right;margin-right: 20px;">Customer Details</span>
+						<br style="clear:both;" />
+						<span class="heading4">JOHN DOE</span>
+						<br style="clear:both;" />
+						<span>abc@gmail.com</span>
+					</div>
+					<br style="clear:both;" />
+				</section>
+			</div>
+			<div class="modal-body">
+				<article>
+					<table class="inventory" id="invertorytable" >
+					<thead>
+						<tr>
+							<th><span contenteditable>Item</span></th>
+							<th><span contenteditable>Rate</span></th>
+							<th><span contenteditable>Quantity</span></th>
+							<th><span contenteditable>Price</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span contenteditable></span>Item Name</td>
+							<td><span data-prefix>₹</span><span contenteditable>0.00</span></td>
+							<td><span contenteditable>0</span></td>
+							<td><span data-prefix>₹</span><span>0.00</span></td>
+							<td><button class="btn btn-default btn-square" id="addbtn" onclick="addrow()"><i class="fa fa-fw fa-arrow-left" style="color: #6495ED"></i></button></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="balance">
+				<tr>
+					<th><span contenteditable>Total</span></th>
+					<td><span data-prefix>$</span><span>600.00</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Amount Paid</span></th>
+					<td><span data-prefix>$</span><span contenteditable>0.00</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Balance Due</span></th>
+					<td><span data-prefix>$</span><span>600.00</span></td>
+				</tr>
+			</table>
+				<!--a class="add">+</a-->
+			</article>
+			<p id="demo"></p>
+			<p id="dema"></p>
+		</div>
+		<div class="modal-footer">
+					<button class="btn-proceed" id="myBtn3">SUBMIT</button>
+		</div>
+	</div>
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+		<script src="../../static/vendor/jquery/jquery.min.js" crossorigin="anonymous"></script>
+		<script src="../../static/vendor/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="../../static/vendor/jquery-easing/jquery.easing.min.js" crossorigin="anonymous"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="../../static/js/sb-admin.min.js" crossorigin="anonymous"></script>
+		<script src="../../static/js/product.js" crossorigin="anonymous"></script>
+
+		
+		
+</body>
+</html>
