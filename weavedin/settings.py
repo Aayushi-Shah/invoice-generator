@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 
     #user defined INSTALLED_APPS
     'invoice',
@@ -84,7 +85,6 @@ DATABASES = {
         'PASSWORD':'aayu1071',
         'HOST' : 'db4free.net',
         'PORT' : '3306'
-
     }
 }
 

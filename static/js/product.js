@@ -117,30 +117,8 @@ function updateInvoice() {
 	}
 
 	document.getElementById("total").innerHTML=total;
-	document.getElementById("gtotal").value=total;
+	document.getElementById("gtotalinput").value=total;
 
-	// update balance cells
-	// ====================
-
-	// get balance cells
-	//cells = document.querySelectorAll('table.balance td:last-child span:last-child');
-
-	// set total
-	//cells[0].innerHTML = total;
-
-	// set balance and meta balance
-	//cells[2].innerHTML = total;
-
-	// update prefix formatting
-	// ========================
-
-	//var prefix = document.querySelector('#prefix').innerHTML;
-	//for (a = document.querySelectorAll('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
-
-	// update price formatting
-	// =======================
-
-	//for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement != a[i]) a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
 }
 
 function taxCalculation(event){
@@ -158,9 +136,8 @@ function taxCalculation(event){
 	document.getElementById("discountlabel").value=discount;
 
 	amount=total-discount+tax;
-	document.getElementById("gtotal").value=amount;
-
-
+	document.getElementById("gtotalinput").value=amount;
+	
 }
 
 function onContentLoad() {

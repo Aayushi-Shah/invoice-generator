@@ -4,7 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="shortcut icon" type="image/x-icon" href="../static/logo.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
 
@@ -13,19 +12,8 @@
 	<link href="../../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<!-- Custom fonts for this template-->
 	<link href="../../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous">
-	<!-- Page level plugin CSS-->
-	<!--link href="../../static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" crossorigin="anonymous"-->
 	<!-- Custom styles for this template-->
 	<link href="../../static/css/sb-admin.css" rel="stylesheet" crossorigin="anonymous">
-	<script type="text/javascript">
-		window.addEventListener( "pageshow", function ( event ) {
-			var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
-			if ( historyTraversal ) {
-				// Handle page restore.
-				window.location.reload();
-			}
-		});
-	</script>
 </head>
 
 	<body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -33,10 +21,6 @@
 	<div>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNav">
 		<a class="navbar-brand" href="/flows">Dashbord</a>
-		<!--button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button-->
-
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<br>
@@ -47,31 +31,6 @@
 					</div>
 				</div>     
 				<br>  
-				<!--li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-					<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-						<i class="fa fa-fw fa-cloud"></i>
-						<span class="nav-link-text">Create Flows</span>
-					</a>
-					<ul class="sidenav-second-level collapse" id="collapseComponents">
-						<li>
-							<a href="/flows">Choose Templates</a>
-						</li>
-						<li>
-							<a href="/customflows">Customize Flows</a>
-						</li>
-					</ul>
-				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-					<a class="nav-link" href="/yourflows">
-						<i class="fa fa-fw fa-briefcase"></i>
-						<span class="nav-link-text">Your Flows</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="/logout">
-						<i class="fa fa-fw fa-sign-out"></i>
-						<span class="nav-link-text">Logout</span></a>
-				</li-->
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
 				<li class="nav-item">
@@ -92,9 +51,9 @@
 					<a href="/flows">Invoice Details</a>
 				</li>
 			</ol>
-			 <button class="btn btn-default btn-circle" id="myBtn"><i class="fa fa-fw fa-plus" style="color: #ffffff"></i></button>
+			 <button type="button" class="btn btn-default btn-circle" id="myBtn"><i class="fa fa-fw fa-plus" style="color: #ffffff"></i></button>
 		</div>
-		</div>
+	</div>
 
 
 
@@ -110,7 +69,8 @@
 				</section>  
 			</div>
 			<div class="modal-body">
-				<form name="customer" method="post" style="font-family:sans-serif;">
+				<form name="customer" method="post" style="font-family:sans-serif;" action="/customer">
+					{% csrf_token %}
 					<section>
 						<div style="float:left;margin-right:20px;">
 							<label for="name" class="heading3">Full Name*</label>
@@ -139,7 +99,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-						<button class="btn-proceed" id="myBtn2">PROCEED</button>
+				<button class="btn-proceed" type="submit" id="myBtn2">PROCEED</button>
 			</div>
 		</div>
 	</div>
@@ -202,7 +162,7 @@
 			</div>
 		</div>
 			<div style="float: right;margin-left: 200px">
-					<span class="heading5" style="font-weight: 500;">Sub Total:</span><span>₹<span><span id="total" style="margin-right:50px;font-weight: 700 ">{{total}}</span>
+					<span class="heading5" style="font-weight: 500;">Sub Total:</span><span>₹</span><span id="total" style="margin-right:50px;font-weight: 700 "></span>
 					
 			</div>
 	</section>
@@ -214,7 +174,7 @@
 			<section>
 				<p id="demo"></p>
 				<div style="float:left;margin-left: -620px; margin-right: 80px; width:60px;">
-					<label for="tax" class="heading4" >Tax</label>
+					<label for="tax" class="heading4">Tax</label>
 					<input id="taxlabel" type="text" value="" name="tax" placeholder="₹0.00" style="border:none;background-color: none;width:60px" >
 				</div>
 				<div style="float:left;margin-left: -500px; margin-right: 80px; width:60px;">
@@ -223,7 +183,7 @@
 				</div>	
 				<div style="float: left;margin-left:-200px;margin-right:80px;">
 					<label for="gtotallabel" style="font-weight: 700">Grand Total:</label>
-					<input id="gtotal" type="text" value="" name="gtotal" style="border:none;width: 60px; font-weight: 500">
+					<input id="gtotalinput" type="text" value="₹0.00" name="gtotal" style="border:none; width:60px; font-weight: 500;">
 				</div>
 				<button class="btn-proceed" id="myBtn3">SAVE</button>
 			</section>
